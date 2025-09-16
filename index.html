@@ -12,6 +12,46 @@
         <img src="image/RS.png" alt="Logo RS" class="logo-circle">
     </div>
 
+    <!-- Menu déroulant déclenché par le logo RS -->
+    <div class="dropdown-menu" id="logoDropdownMenu">
+        <a href="index.html" class="active">
+            <i class='bx bx-home-alt-2'></i>
+            <span>Accueil</span>
+        </a>
+        <a href="formation.html">
+            <i class='bx bxs-graduation'></i>
+            <span>Formation</span>
+        </a>
+        <a href="competences.html">
+            <i class='bx bx-chip'></i>
+            <span>Compétences</span>
+        </a>
+        <a href="projets.html">
+            <i class='bx bx-folder-open'></i>
+            <span>Projets</span>
+        </a>
+        <a href="stages.html">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            <span>Alternance</span>
+        </a>
+        <a href="veille.html">
+            <i class='bx bx-radar'></i>
+            <span>Veille</span>
+        </a>
+        <a href="E5.html">
+            <i class='bx bx-code-block'></i>
+            <span>E5</span>
+        </a>
+        <a href="E6.html">
+            <i class='bx bx-server'></i>
+            <span>E6</span>
+        </a>
+        <a href="contact.html">
+            <i class='bx bx-envelope'></i>
+            <span>Contact</span>
+        </a>
+    </div>
+
     <div class="background">
         <span></span>
         <span></span>
@@ -25,54 +65,7 @@
         <span></span>
     </div>
 
-    <nav class="sidebar">
-        <div class="logo">
-            <i class='bx bx-code-block'></i>
-            <div class="logo-text">
-                <span class="brand">SAINSARD RAYAN</span>
-                <span class="title">Portfolio</span>
-            </div>
-        </div>
-        <div class="menu">
-            <a href="index.html" class="active">
-                <i class='bx bx-home-alt-2'></i>
-                <span>Accueil</span>
-            </a>
-            <a href="formation.html">
-                <i class='bx bxs-graduation'></i>
-                <span>Formation</span>
-            </a>
-            <a href="competences.html">
-                <i class='bx bx-chip'></i>
-                <span>Compétences</span>
-            </a>
-            <a href="projets.html">
-                <i class='bx bx-folder-open'></i>
-                <span>Projets</span>
-            </a>
-            <a href="stages.html">
-                <i class='bx bxs-briefcase-alt-2'></i>
-                <span>Alternance
-                </span>
-            </a>
-            <a href="veille.html">
-                <i class='bx bx-radar'></i>
-                <span>Veille</span>
-            </a>
-            <a href="E5.html">
-                <i class='bx bx-code-block'></i>
-                <span>E5</span>
-            </a>
-            <a href="E6.html">
-                <i class='bx bx-server'></i>
-                <span>E6</span>
-            </a>
-            <a href="contact.html">
-                <i class='bx bx-envelope'></i>
-                <span>Contact</span>
-            </a>
-        </div>
-    </nav>
+    
 
     <main class="main-content">
         <section id="accueil" class="hero">
@@ -125,6 +118,30 @@
                 }
             });
         });
+
+        // Ouvrir/fermer le menu déroulant en appuyant sur le logo RS
+        const fixedLogo = document.querySelector('.fixed-logo');
+        const dropdownMenu = document.getElementById('logoDropdownMenu');
+        if (fixedLogo && dropdownMenu) {
+            fixedLogo.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('active');
+            });
+
+            // Fermer en cliquant ailleurs
+            document.addEventListener('click', (e) => {
+                if (!dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('active');
+                }
+            });
+
+            // Fermer après clic sur un lien
+            dropdownMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    dropdownMenu.classList.remove('active');
+                });
+            });
+        }
     </script>
 </body>
 </html> 
