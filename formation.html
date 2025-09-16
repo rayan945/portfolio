@@ -11,46 +11,44 @@
     <div class="fixed-logo">
         <img src="image/RS.png" alt="Logo RS" class="logo-circle">
     </div>
-    <nav class="sidebar">
-        <div class="menu">
-            <a href="index.html">
-                <i class='bx bx-home-alt-2'></i>
-                <span>Accueil</span>
-            </a>
-            <a href="formation.html"class="active">
-                <i class='bx bxs-graduation'></i>
-                <span>Formation</span>
-            </a>
-            <a href="competences.html" >
-                <i class='bx bx-chip'></i>
-                <span>Compétences</span>
-            </a>
-            <a href="projets.html">
-                <i class='bx bx-folder-open'></i>
-                <span>Projets</span>
-            </a>
-            <a href="stages.html">
-                <i class='bx bxs-briefcase-alt-2'></i>
-                <span>Alternance</span>
-            </a>
-            <a href="veille.html">
-                <i class='bx bx-radar'></i>
-                <span>Veille</span>
-            </a>
-            <a href="E5.html">
-                <i class='bx bx-code-block'></i>
-                <span>E5</span>
-            </a>
-            <a href="E6.html">
-                <i class='bx bx-server'></i>
-                <span>E6</span>
-            </a>
-            <a href="contact.html">
-                <i class='bx bx-envelope'></i>
-                <span>Contact</span>
-            </a>
-        </div>
-    </nav>
+    <div class="dropdown-menu" id="logoDropdownMenu">
+        <a href="index.html">
+            <i class='bx bx-home-alt-2'></i>
+            <span>Accueil</span>
+        </a>
+        <a href="formation.html" class="active">
+            <i class='bx bxs-graduation'></i>
+            <span>Formation</span>
+        </a>
+        <a href="competences.html">
+            <i class='bx bx-chip'></i>
+            <span>Compétences</span>
+        </a>
+        <a href="projets.html">
+            <i class='bx bx-folder-open'></i>
+            <span>Projets</span>
+        </a>
+        <a href="stages.html">
+            <i class='bx bxs-briefcase-alt-2'></i>
+            <span>Alternance</span>
+        </a>
+        <a href="veille.html">
+            <i class='bx bx-radar'></i>
+            <span>Veille</span>
+        </a>
+        <a href="E5.html">
+            <i class='bx bx-code-block'></i>
+            <span>E5</span>
+        </a>
+        <a href="E6.html">
+            <i class='bx bx-server'></i>
+            <span>E6</span>
+        </a>
+        <a href="contact.html">
+            <i class='bx bx-envelope'></i>
+            <span>Contact</span>
+        </a>
+    </div>
 
     <main class="main-content">
         
@@ -161,5 +159,23 @@
         </section>
 
     </main>
+    <script>
+        const fixedLogo = document.querySelector('.fixed-logo');
+        const dropdownMenu = document.getElementById('logoDropdownMenu');
+        if (fixedLogo && dropdownMenu) {
+            fixedLogo.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('active');
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('active');
+                }
+            });
+            dropdownMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => dropdownMenu.classList.remove('active'));
+            });
+        }
+    </script>
 </body>
 </html> 
